@@ -1,9 +1,7 @@
 package com.zipcodewilmington.arrayutility;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * Created by leon on 3/6/18.
@@ -22,7 +20,7 @@ public class ArrayUtility<T> {
         return Collections.frequency(arrayList, valueToEvaluate);
     }
 
-    public List<T> mergeArrays(T[] arrayToMerge){
+    public List<T> mergeArrays(T[] arrayToMerge) {
         List<T> mergedArrayList = new ArrayList<>();
         mergedArrayList.addAll(Arrays.asList(arrayToMerge));
         mergedArrayList.addAll(Arrays.asList(inputArray));
@@ -46,9 +44,21 @@ public class ArrayUtility<T> {
         return mostCommonValue;
     }
 
-    public Integer getNumberOfOccurrences(T valueToEvaluate){
+    public Integer getNumberOfOccurrences(T valueToEvaluate) {
         List<T> arrayList = new ArrayList<>();
         arrayList.addAll(Arrays.asList(inputArray));
         return Collections.frequency(arrayList, valueToEvaluate);
+    }
+
+    public T[] removeValue(T valueToRemove) {
+        int numberOfOccurrences = getNumberOfOccurrences(valueToRemove);
+        T[] result = Arrays.copyOf(inputArray, inputArray.length - numberOfOccurrences);
+        for (int i = 0, j = 0; i < inputArray.length; i++) {
+            if (inputArray[i] != valueToRemove) {
+                result[j] = inputArray[i];
+                j++;
+            }
+        }
+        return result;
     }
 }
