@@ -52,13 +52,13 @@ public class ArrayUtility<T> {
 
     public T[] removeValue(T valueToRemove) {
         int numberOfOccurrences = getNumberOfOccurrences(valueToRemove);
-        T[] result = Arrays.copyOf(inputArray, inputArray.length - numberOfOccurrences);
-        for (int i = 0, j = 0; i < inputArray.length; i++) {
-            if (inputArray[i] != valueToRemove) {
-                result[j] = inputArray[i];
-                j++;
+        T[] resultArray = Arrays.copyOf(inputArray, inputArray.length - numberOfOccurrences);
+        for (int indexOfOriginalArray = 0, indexOfNewArray = 0; indexOfOriginalArray < inputArray.length; indexOfOriginalArray++) {
+            if (inputArray[indexOfOriginalArray] != valueToRemove) {
+                resultArray[indexOfNewArray] = inputArray[indexOfOriginalArray];
+                indexOfNewArray++;
             }
         }
-        return result;
+        return resultArray;
     }
 }
