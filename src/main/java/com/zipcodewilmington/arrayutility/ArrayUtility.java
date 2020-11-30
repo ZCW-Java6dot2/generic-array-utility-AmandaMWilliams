@@ -46,4 +46,9 @@ public class ArrayUtility<T> {
         return mostCommonValue;
     }
 
+    public Integer getNumberOfOccurrences(T valueToEvaluate){
+        List<T> arrayList = new ArrayList<>();
+        arrayList.addAll(Arrays.asList(inputArray));
+        return Collections.frequency(arrayList, valueToEvaluate);
+    }
 }
